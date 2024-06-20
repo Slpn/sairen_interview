@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="title">Upload your file!</h1>
+  <div class="upload-container">
+    <input type="file" (change)="onFileSelected($event)">
+    <button (click)="onUpload()" [disabled]="!selectedFile">Upload</button>
+    <button (click)="getTokenPromise()">Generate Token</button>
+    <p *ngIf="uploadProgress != null">Progression: {{ uploadProgress }}%</p>
+    <p *ngIf="token; else noToken">Token generated!</p>
+    <ng-template #noToken><p>No token generated yet.</p></ng-template>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </div>
+</div>
